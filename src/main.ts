@@ -7,14 +7,14 @@ async function bootstrap() {
   const logger = new Logger('Bootstrap');
   const app = await NestFactory.create(AppModule);
 
-  // 1. Global Validation Pipe
+
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,       
     forbidNonWhitelisted: true, 
     transform: true,       
   }));
 
-  // 2. Swagger API Documentation
+
   const config = new DocumentBuilder()
     .setTitle('RevoBank API')
     .setDescription('Secure banking API for customers and administrators')
@@ -33,28 +33,75 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api-docs', app, document);
 
-  // 3. Enable CORS (Penting untuk akses dari Frontend/Browser)
+  const customOptions = {
+    customSiteTitle: "RevoBank API Documentation",
+    customCss: `
+      /* Header minimalis putih */
+      .swagger-ui .topbar { 
+        background-color: #ffffff; 
+        border-bottom: 1px solid #f1f5f9;
+        padding: 15px 0;
+      }
+      .swagger-ui .topbar-wrapper img { 
+        content: url('https://cdn-icons-png.flaticon.com/512/2830/2830284.png'); 
+        width: 35px; 
+      }
+      
+      /* Warna Pastel untuk Metode HTTP */
+      .swagger-ui .opblock.opblock-post { background: #f0fdf4; border-color: #bbf7d0; } /* Hijau Pastel */
+      .swagger-ui .opblock.opblock-get { background: #eff6ff; border-color: #dbeafe; }  /* Biru Pastel */
+      .swagger-ui .opblock.opblock-put { background: #fffbeb; border-color: #fef3c7; }  /* Kuning Pastel */
+      .swagger-ui .opblock.opblock-delete { background: #fef2f2; border-color: #fee2e2; } /* Merah Pastel */
+
+      /* Elemen Tombol & Authorize */
+      .swagger-ui .btn.execute { 
+        background-color: #6366f1; 
+        border-color: #6366f1; 
+        color: white; 
+        border-radius: 6px; 
+      }
+      .swagger-ui .auth-wrapper .authorize { 
+        background-color: #6366f1; 
+        border-color: #6366f1; 
+        border-radius: 6px; 
+        color: white;
+      }
+      
+      /* Typography minimalis */
+      .swagger-ui .info .title { 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        color: #0f172a; 
+      }
+      .swagger-ui .scheme-container { 
+        background: transparent; 
+        box-shadow: none; 
+        border-top: 1px solid #f1f5f9; 
+      }
+    `,
+  };
+
+  SwaggerModule.setup('api-docs', app, document, customOptions);
+
+ 
   app.enableCors();
 
-  // 4. Konfigurasi Port untuk Railway
-  // Railway memberikan port secara dinamis melalui process.env.PORT
+
   const port = process.env.PORT || 3000;
 
-  // 5. Listen pada 0.0.0.0
-  // WAJIB: Agar aplikasi bisa menerima trafik dari luar container Railway
+
   await app.listen(port, '0.0.0.0');
 
-  // 6. Log yang lebih informatif
+
   logger.log(`✅ Application is running on port: ${port}`);
   
   if (process.env.RAILWAY_PUBLIC_DOMAIN) {
     logger.log(`🌐 Public URL: https://${process.env.RAILWAY_PUBLIC_DOMAIN}`);
     logger.log(`📚 Swagger Docs: https://${process.env.RAILWAY_PUBLIC_DOMAIN}/api-docs`);
   } else {
-    logger.log(`🚀 Local URL: http://localhost:${port}`);
-    logger.log(`📚 Local Swagger Docs: http://localhost:${port}/api-docs`);
+    const url = await app.getUrl();
+    logger.log(`🚀 Local URL: ${url}`);
+    logger.log(`📚 Local Swagger Docs: ${url}/api-docs`);
   }
 }
 
