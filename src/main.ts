@@ -55,14 +55,14 @@ async function bootstrap() {
 
     
       .swagger-ui .btn.execute { 
-        background-color: #3bc5c9; 
-        border-color: #3bc5c9; 
+        background-color: #ffffff; 
+        border-color: #030303; 
         color: white; 
         border-radius: 6px; 
       }
       .swagger-ui .auth-wrapper .authorize { 
-        background-color: #3bc5c9; 
-        border-color: #3bc5c9; 
+        background-color: #ffffff; 
+        border-color: #000000; 
         border-radius: 6px; 
         color: white;
       }
