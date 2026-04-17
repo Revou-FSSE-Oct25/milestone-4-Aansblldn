@@ -2,6 +2,13 @@
 
 Secure banking API built with NestJS, Prisma, and PostgreSQL/SQLite.
 
+## 🌐 Live Demo
+You can access the live API and documentation here:
+- **Production URL:** [https://revobank-api-aan-production.up.railway.app/](https://revobank-api-aan-production.up.railway.app/)
+- **Swagger Documentation:** [https://revobank-api-aan-production.up.railway.app/api-docs](https://revobank-api-aan-production.up.railway.app/api-docs)
+
+---
+
 ## Features
 
 ### Authentication
@@ -42,7 +49,7 @@ Secure banking API built with NestJS, Prisma, and PostgreSQL/SQLite.
 
 ```bash
 # Clone repository
-git clone [github.com/Revou-FSSE-Oct25/milestone-4-Aansblldn]
+git clone [https://github.com/Revou-FSSE-Oct25/milestone-4-Aansblldn](https://github.com/Revou-FSSE-Oct25/milestone-4-Aansblldn)
 cd revobank-api
 
 # Install dependencies
