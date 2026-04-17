@@ -64,7 +64,7 @@ async function bootstrap() {
         background-color: #ffffff; 
         border-color: #000000; 
         border-radius: 6px; 
-        color: white;
+        color: black;
       }
       
     
