@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { AppController } from './app.controller'; // <--- IMPORT INI
+import { AppService } from './app.service';       // <--- IMPORT INI
 import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
@@ -15,5 +17,7 @@ import { TransactionsModule } from './transactions/transactions.module';
     AccountsModule,
     TransactionsModule,
   ],
+  controllers: [AppController], 
+  providers: [AppService],    
 })
 export class AppModule {}
