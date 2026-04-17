@@ -42,7 +42,7 @@ Secure banking API built with NestJS, Prisma, and PostgreSQL/SQLite.
 
 ```bash
 # Clone repository
-git clone &lt;github.com/Revou-FSSE-Oct25/milestone-4-Aansblldn&gt;
+git clone [github.com/Revou-FSSE-Oct25/milestone-4-Aansblldn]
 cd revobank-api
 
 # Install dependencies
