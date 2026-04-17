@@ -49,7 +49,7 @@ You can access the live API and documentation here:
 
 ```bash
 # Clone repository
-git clone [https://github.com/Revou-FSSE-Oct25/milestone-4-Aansblldn](https://github.com/Revou-FSSE-Oct25/milestone-4-Aansblldn)
+git clone (https://github.com/Revou-FSSE-Oct25/milestone-4-Aansblldn)
 cd revobank-api
 
 # Install dependencies
