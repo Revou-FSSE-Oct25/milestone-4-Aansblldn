@@ -1,1 +1,63 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/PzCCy7VV)
+# RevoBank API
+
+Secure banking API built with NestJS, Prisma, and PostgreSQL/SQLite.
+
+## Features
+
+### Authentication
+- User registration with JWT token
+- User login with JWT token
+- Protected routes with JWT Guard
+
+### Account Management
+- Create bank accounts (Savings/Checking)
+- List all user accounts
+- Get specific account details
+- Update account information
+- Delete accounts
+
+### Transactions
+- Deposit to account
+- Withdraw from account (with balance validation)
+- Transfer between accounts (with balance validation)
+- Transaction history
+
+### Security
+- JWT-based authentication
+- Password hashing with bcrypt
+- Role-based access control (Customer/Admin)
+- Users can only access their own data
+
+## Technologies
+
+- **Framework:** NestJS
+- **ORM:** Prisma
+- **Database:** SQLite (development) / PostgreSQL (production)
+- **Authentication:** JWT, Passport
+- **Validation:** class-validator, class-transformer
+- **Documentation:** Swagger/OpenAPI
+- **Testing:** Jest
+
+## Installation
+
+```bash
+# Clone repository
+git clone &lt;github.com/Revou-FSSE-Oct25/milestone-4-Aansblldn&gt;
+cd revobank-api
+
+# Install dependencies
+npm install
+
+# Setup environment
+cp .env.example .env
+# Edit .env with your configuration
+
+# Database setup
+npx prisma migrate dev
+npx prisma generate
+
+# Run tests
+npm test
+
+# Start development server
+npm run start:dev
