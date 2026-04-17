@@ -21,7 +21,6 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate deploy"
   },
-
   "dependencies": {
     "@nestjs/common": "^11.0.1",
     "@nestjs/config": "^4.0.4",
@@ -31,6 +30,8 @@
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/swagger": "^11.3.0",
     "@prisma/client": "^5.22.0",
+    "@supabase/ssr": "^0.10.2",
+    "@supabase/supabase-js": "^2.103.3",
     "bcrypt": "^6.0.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.15.1",
